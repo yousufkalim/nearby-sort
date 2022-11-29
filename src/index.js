@@ -16,11 +16,24 @@ const deg2rad = (deg) => {
   return deg * (Math.PI / 180);
 };
 
+// Validate the arguments
+const validateArgs = (lat, long, arr) => {
+  if (!lat || !long || !arr) {
+    throw new Error('Invalid arguments');
+  }
+  if (typeof lat !== 'number' || typeof long !== 'number') {
+    throw new Error('lat and long should be numbers');
+  }
+  if (!Array.isArray(arr)) {
+    throw new Error('Third argument should be an array');
+  }
+};
+
 // Sort the array according to the user's lat long
 const nearbySort = (lat, long, arr) => {
   return new Promise((resolve, reject) => {
     try {
-      // validateArgs(lat, long, arr);
+      validateArgs(lat, long, arr);
       const sortedArray = arr.sort((a, b) => {
         const distanceA = getDistance(lat, long, a.lat, a.long);
         const distanceB = getDistance(lat, long, b.lat, b.long);
