@@ -37,7 +37,7 @@ const nearbySort = ({ lat, long }, arr, asc = true) => {
       const sortedArray = arr.sort((a, b) => {
         const distanceA = getDistance(lat, long, a.lat, a.long);
         const distanceB = getDistance(lat, long, b.lat, b.long);
-        return distanceA - distanceB;
+        return asc ? distanceA - distanceB : distanceB - distanceA;
       });
       resolve(sortedArray);
     } catch (err) {
