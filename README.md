@@ -9,7 +9,8 @@ This is very small and lightweight library that is capable to sort the given arr
 Install nearby-sort with npm
 
 ```bash
-  npm install nearby-sort
+  npm install nearby-sort // npm
+  yarn add nearby-sort // yarn
 ```
     
 ## Usage/Examples
