@@ -30,7 +30,7 @@ const validateArgs = (lat, long, arr) => {
 };
 
 // Sort the array according to the user's lat long
-const nearbySort = (lat, long, arr) => {
+const nearbySort = ({ lat, long }, arr, asc = true) => {
   return new Promise((resolve, reject) => {
     try {
       validateArgs(lat, long, arr);
