@@ -2,8 +2,10 @@ import { expect, test } from '@jest/globals';
 import nearbySort from '../src/index.js';
 
 // User's location
-const lat = 31.442907;
-const long = 74.271519;
+const coordinates = {
+  lat: 31.442907,
+  long: 74.271519,
+};
 
 // Array of locations
 const arr = [
@@ -24,9 +26,16 @@ const arr = [
   },
 ];
 
-test('Should test the nearby sort function', async () => {
-  const sortedArray = await nearbySort(lat, long, arr);
+test('Should test the nearby sort function as ascending order', async () => {
+  const sortedArray = await nearbySort(coordinates, arr, true);
   expect(sortedArray[0].name).toBe('Steak Studio');
   expect(sortedArray[1].name).toBe('Kudos');
   expect(sortedArray[2].name).toBe('Dr Hospital');
+});
+
+test('Should test the nearby sort function as descending order', async () => {
+  const sortedArray = await nearbySort(coordinates, arr, false);
+  expect(sortedArray[0].name).toBe('Dr Hospital');
+  expect(sortedArray[1].name).toBe('Kudos');
+  expect(sortedArray[2].name).toBe('Steak Studio');
 });
