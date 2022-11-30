@@ -17,7 +17,7 @@ const deg2rad = (deg) => {
 };
 
 // Validate the arguments
-const validateArgs = (lat, long, arr) => {
+const validateArgs = (lat, long, arr, asc) => {
   if (!lat || !long || !arr) {
     throw new Error('Invalid arguments');
   }
@@ -25,7 +25,10 @@ const validateArgs = (lat, long, arr) => {
     throw new Error('lat and long should be numbers');
   }
   if (!Array.isArray(arr)) {
-    throw new Error('Third argument should be an array');
+    throw new Error('Second argument should be an array');
+  }
+  if (typeof asc !== 'boolean') {
+    throw new Error('Asc argument should be a boolean');
   }
 };
 
@@ -33,7 +36,7 @@ const validateArgs = (lat, long, arr) => {
 const nearbySort = ({ lat, long }, arr, asc = true) => {
   return new Promise((resolve, reject) => {
     try {
-      validateArgs(lat, long, arr);
+      validateArgs(lat, long, arr, asc);
       const sortedArray = arr.sort((a, b) => {
         const distanceA = getDistance(lat, long, a.lat, a.long);
         const distanceB = getDistance(lat, long, b.lat, b.long);
