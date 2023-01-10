@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals';
-import nearbySort from '../src/index.js';
+import nearbySort from '../src';
 
 // User's location
 const coordinates = {
