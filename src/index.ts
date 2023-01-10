@@ -1,5 +1,9 @@
+/**
+ * Index file for the package
+ * @author Yousuf Kalim
+ */
 // Distance calculation
-const getDistance = (lat1, lon1, lat2, lon2) => {
+const getDistance = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
   const R = 6371; // Radius of the earth in km
   const dLat = deg2rad(lat2 - lat1); // deg2rad below
   const dLon = deg2rad(lon2 - lon1);
@@ -12,12 +16,12 @@ const getDistance = (lat1, lon1, lat2, lon2) => {
 };
 
 // Deg conversion
-const deg2rad = (deg) => {
+const deg2rad = (deg: number): number => {
   return deg * (Math.PI / 180);
 };
 
 // Validate the arguments
-const validateArgs = (lat, long, arr, asc) => {
+const validateArgs = (lat: number, long: number, arr: any[], asc: boolean): void => {
   if (!lat || !long || !arr) {
     throw new Error('Invalid arguments');
   }
@@ -32,9 +36,20 @@ const validateArgs = (lat, long, arr, asc) => {
   }
 };
 
-// Sort the array according to the user's lat long
-const nearbySort = ({ lat, long }, arr, asc = true) => {
-  return new Promise((resolve, reject) => {
+/**
+ * Sort the array according to the user's lat long
+ * @param lat {Number} - User's latitude
+ * @param long {Number} - User's longitude
+ * @param arr {Array} - Array of objects that contain lat and long
+ * @param asc {Boolean} - Ascending or descending order
+ * @returns {Array} - Sorted array
+ */
+const nearbySort = async (
+  { lat, long }: { lat: number; long: number },
+  arr: any[],
+  asc = true,
+): Promise<any[]> => {
+  return await new Promise((resolve, reject) => {
     try {
       validateArgs(lat, long, arr, asc);
       const sortedArray = arr.sort((a, b) => {
