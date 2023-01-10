@@ -1,9 +1,9 @@
 {
   "name": "nearby-sort",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "The library to sort array of objects by distance from a given point",
   "type": "module",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "exports": {
     "require": "./dist/sort.cjs",
     "default": "./dist/sort.modern.js"
@@ -11,8 +11,9 @@
   "main": "./dist/sort.cjs",
   "module": "./dist/sort.module.js",
   "unpkg": "./dist/sort.umd.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "microbundle",
+    "build": "rm -rf ./dist && microbundle --tsconfig ./tsconfig.json",
     "dev": "microbundle watch",
     "prepare": "husky install",
     "lint": "eslint src test",
@@ -37,15 +38,23 @@
   "homepage": "https://github.com/yousufkalim/nearby-sort#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
+    "@types/jest": "^29.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
     "commitlint-config-non-conventional": "^1.0.1",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard-with-typescript": "^24.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
     "husky": "^8.0.0",
     "jest": "^29.3.1",
     "lint-staged": "^13.0.3",
     "microbundle": "^0.15.1",
     "prettier": "^2.7.1",
-    "pretty-quick": "^3.1.3"
+    "pretty-quick": "^3.1.3",
+    "ts-jest": "^29.0.3",
+    "typescript": "*"
   }
 }
