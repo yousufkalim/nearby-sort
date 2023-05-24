@@ -1,6 +1,6 @@
 {
   "name": "nearby-sort",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "The library to sort array of objects by distance from a given point",
   "type": "module",
   "source": "src/index.ts",
