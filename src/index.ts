@@ -22,7 +22,11 @@ const deg2rad = (deg: number): number => {
 
 // Validate the arguments
 const validateArgs = (lat: number, long: number, arr: any[], asc: boolean): void => {
-  if (!lat || !long || !arr) {
+  if (
+    isNaN(parseFloat(lat as unknown as string)) ||
+    isNaN(parseFloat(long as unknown as string)) ||
+    !arr
+  ) {
     throw new Error('Invalid arguments');
   }
   if (typeof lat !== 'number' || typeof long !== 'number') {
